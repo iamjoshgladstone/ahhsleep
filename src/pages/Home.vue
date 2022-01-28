@@ -18,6 +18,7 @@
       @click="
         startTimer();
         playAudio();
+        startFade();
       "
     >
       Start Timer
@@ -46,19 +47,29 @@ export default {
     const int = ref(1000);
     let timer;
     let audioTimer;
-    var index = 0;
+    let fadeOut;
+    var vol = 1;
+    var index = Math.floor(Math.random() * words.length);
+    var songArray = [];
 
+    // Push the first value into the songArray
+    songArray.push(index);
+
+    // Watch to get the Current Time In Seconds matching minutes
     watch(minutes, (newValue) => {
       currentTimeInSeconds.value = newValue * 60;
     });
 
+    // Watch for end timer
     watch(currentTimeInSeconds, () => {
       if (currentTimeInSeconds.value == 0) {
         stopTimer();
         stopAudio();
+        stopFade();
       }
     });
 
+    // Define new audio elements
     const audioElement = new Audio();
     const roomNoise = new Audio(
       "https://firebasestorage.googleapis.com/v0/b/sleepy-words.appspot.com/o/roomnoise.wav?alt=media&token=fe61c15e-7346-4ac2-bfea-01abc6928db3"
@@ -70,14 +81,45 @@ export default {
       audioElement.src = words[index].file;
       audioElement.play();
       roomNoise.play();
+      console.log(audioElement.volume);
+    };
+
+    const startFade = () => {
+      const fadeInt = (minutes.value * 60) / 100 / 1000;
+      const fadeSeconds = ((minutes.value * 60) / 100) * 1000;
+      fadeOut = setInterval(() => {
+        if (vol > 0) {
+          vol = vol - fadeInt;
+          audioElement.volume = vol;
+        }
+      }, fadeSeconds);
+    };
+
+    const stopFade = () => {
+      clearInterval(fadeOut);
     };
 
     audioElement.addEventListener("ended", () => {
+      console.log(songArray);
       int.value += 500;
-      if (index === words.length) {
-        index = 0;
+      var randomNum = Math.floor(Math.random() * words.length);
+      index = randomNum;
+      if (songArray.includes(randomNum)) {
+        randomNum = Math.floor(Math.random() * words.length);
       } else {
-        index++;
+        songArray.push(index);
+      }
+
+      // if (!songArray.includes(index)) {
+      //   index = randomNum;
+      //   songArray.push(index);
+      // } else {
+      //   index = Math.floor(Math.random() * words.length);
+      //   songArray.push(index);
+      // }
+
+      if (songArray.length === words.length) {
+        songArray = [];
       }
       audioTimer = setTimeout(playAudio, int.value);
     });
@@ -115,6 +157,9 @@ export default {
       stopTimer,
       playAudio,
       stopAudio,
+      startFade,
+      songArray,
+      stopFade,
     };
   },
 };
