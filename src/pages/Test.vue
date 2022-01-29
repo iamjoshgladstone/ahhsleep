@@ -62,16 +62,16 @@ export default {
 //       audioElement.play();
 //     };
 
-//     audioElement.addEventListener("ended", () => {
-//       int.value += 500;
-//       if (index === 3) {
-//         index = 0;
-//       } else {
-//         index++;
-//       }
+audioElement.addEventListener("ended", () => {
+  int.value += 500;
+  if (index === 3) {
+    index = 0;
+  } else {
+    index++;
+  }
 
-//       setTimeout(playAudio, int.value);
-//     });
+  setTimeout(playAudio, int.value);
+});
 
 //     const startTimer = () => {
 //       timerIsStarted.value = true;

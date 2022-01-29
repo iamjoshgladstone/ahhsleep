@@ -50,10 +50,12 @@ export default {
     let fadeOut;
     var vol = 1;
     var index = Math.floor(Math.random() * words.length);
-    var songArray = [];
+    var songArrayToExclude = [];
 
-    // Push the first value into the songArray
-    songArray.push(index);
+    // Add all the available words to the array
+    for (var i = 0; i <= words.length - 1; i++) {
+      songArrayToExclude.push(i);
+    }
 
     // Watch to get the Current Time In Seconds matching minutes
     watch(minutes, (newValue) => {
@@ -81,7 +83,6 @@ export default {
       audioElement.src = words[index].file;
       audioElement.play();
       roomNoise.play();
-      console.log(audioElement.volume);
     };
 
     const startFade = () => {
@@ -99,27 +100,17 @@ export default {
       clearInterval(fadeOut);
     };
 
+    // Fix this to generate new random numbers
     audioElement.addEventListener("ended", () => {
-      console.log(songArray);
       int.value += 500;
       var randomNum = Math.floor(Math.random() * words.length);
-      index = randomNum;
-      if (songArray.includes(randomNum)) {
-        randomNum = Math.floor(Math.random() * words.length);
-      } else {
-        songArray.push(index);
-      }
+      var roll = songArrayToExclude.splice(randomNum, 1);
+      index = roll;
 
-      // if (!songArray.includes(index)) {
-      //   index = randomNum;
-      //   songArray.push(index);
-      // } else {
-      //   index = Math.floor(Math.random() * words.length);
-      //   songArray.push(index);
-      // }
-
-      if (songArray.length === words.length) {
-        songArray = [];
+      if (songArrayToExclude.length === 0) {
+        for (var i = 1; i <= words.length - 1; i++) {
+          songArrayToExclude.push(i);
+        }
       }
       audioTimer = setTimeout(playAudio, int.value);
     });
@@ -158,7 +149,6 @@ export default {
       playAudio,
       stopAudio,
       startFade,
-      songArray,
       stopFade,
     };
   },
