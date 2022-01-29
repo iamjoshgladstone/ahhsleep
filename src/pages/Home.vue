@@ -1,5 +1,7 @@
 <template>
-  <div class="q-ma-lg fixed-center">
+  <div
+    class="window-height window-width row justify-center items-center q-pa-lg"
+  >
     <q-slider
       v-model="minutes"
       :min="0"
@@ -7,31 +9,55 @@
       :step="1"
       dark
       label
+      dense
       label-always
       color="light-blue"
+      track-size="35px"
     />
-    <div>
+    <q-knob
+      v-model="minutes"
+      size="200px"
+      :thickness="0.2"
+      color="purple-3"
+      center-color="purple"
+      track-color="purple-1"
+      class="q-ma-md"
+      show-value
+      :min="0"
+      :max="15"
+    />
+    <!-- <div>
       <h3>{{ timeDisplay }}</h3>
+    </div> -->
+    <div>
+      <q-btn
+        size="22px"
+        class="q-px-xl q-py-xs"
+        color="purple"
+        label="Start Timer"
+        rounded
+        ripple
+        v-if="!timerIsStarted"
+        @click="
+          startTimer();
+          playAudio();
+          startFade();
+        "
+      />
+      <q-btn
+        size="22px"
+        class="q-px-xl q-py-xs"
+        color="purple"
+        label="Stop Timer"
+        rounded
+        push
+        v-if="timerIsStarted"
+        @click="
+          stopTimer();
+          stopAudio();
+        "
+      />
     </div>
-    <button
-      v-if="!timerIsStarted"
-      @click="
-        startTimer();
-        playAudio();
-        startFade();
-      "
-    >
-      Start Timer
-    </button>
-    <button
-      v-if="timerIsStarted"
-      @click="
-        stopTimer();
-        stopAudio();
-      "
-    >
-      Stop Timer
-    </button>
   </div>
 </template>
 
@@ -41,7 +67,7 @@ import { ref, computed, watch } from "vue";
 
 export default {
   setup() {
-    const minutes = ref(10);
+    const minutes = ref(5);
     const timerIsStarted = ref(false);
     const currentTimeInSeconds = ref(minutes.value * 60);
     const int = ref(1000);
@@ -103,9 +129,11 @@ export default {
     // Fix this to generate new random numbers
     audioElement.addEventListener("ended", () => {
       int.value += 500;
-      var randomNum = Math.floor(Math.random() * words.length);
+      var randomNum = Math.floor(Math.random() * songArrayToExclude.length);
       var roll = songArrayToExclude.splice(randomNum, 1);
       index = roll;
+      console.log(songArrayToExclude);
+      console.log(index);
 
       if (songArrayToExclude.length === 0) {
         for (var i = 1; i <= words.length - 1; i++) {
@@ -157,9 +185,17 @@ export default {
 
 <style scoped>
 body {
-  background-color: black;
+  background-color: #213f20;
 }
 h2 {
   font-size: 30px;
+}
+
+.timer {
+  border-radius: 30px;
+}
+
+.q-time__header {
+  display: none;
 }
 </style>

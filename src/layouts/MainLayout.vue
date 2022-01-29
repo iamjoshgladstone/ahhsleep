@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header bordered class="bg-white text-primary">
+    <q-header class="bg-white text-primary">
       <q-toolbar>
         <q-toolbar-title class="text-center"> Ahhsleep </q-toolbar-title>
       </q-toolbar>
@@ -21,7 +21,7 @@ export default {
 
 <style>
 .q-toolbar {
-  background-color: black;
+  background-color: #213f20;
   color: white;
 }
 </style>
