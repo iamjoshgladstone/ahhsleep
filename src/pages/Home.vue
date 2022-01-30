@@ -1,5 +1,8 @@
 <template>
   <div class="column justify-center items-center q-pa-lg q-mt-xl">
+    <div>
+      <h3 class="text-color">{{ timeDisplay }}</h3>
+    </div>
     <p>Drag to set timer</p>
     <q-slider
       v-model="minutes"
@@ -24,9 +27,7 @@
       :min="0"
       :max="15"
     /> -->
-    <div>
-      <h3 class="text-color">{{ timeDisplay }}</h3>
-    </div>
+
     <div>
       <q-btn
         size="22px"
