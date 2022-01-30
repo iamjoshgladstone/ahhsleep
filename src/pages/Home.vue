@@ -32,7 +32,7 @@
       <q-btn
         size="22px"
         style="background: #6f7793"
-        class="q-px-xl q-py-xs"
+        class="q-px-xl q-py-xs q-mt-xl"
         label="Start Timer"
         rounded
         ripple
@@ -45,7 +45,7 @@
       />
       <q-btn
         size="22px"
-        class="q-px-xl q-py-xs"
+        class="q-px-xl q-py-xs q-mt-xl"
         style="background: #6f7793"
         label="Stop Timer"
         rounded
