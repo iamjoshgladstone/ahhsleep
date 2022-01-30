@@ -1,10 +1,8 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="bg-white text-primary">
-      <q-toolbar>
-        <q-toolbar-title class="text-center"> Ahhsleep </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+    <header class="q-mt-lg row justify-center items-center text-center">
+      <div class="text-gradient">Ahhsleep</div>
+    </header>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -21,7 +19,20 @@ export default {
 
 <style>
 .q-toolbar {
-  background-color: #213f20;
   color: white;
+}
+
+header {
+  background-color: rgba(46, 47, 71, 1);
+  height: 50px;
+  font-size: 50px;
+}
+.text-gradient {
+  background: #787e99;
+  background: -webkit-linear-gradient(to right, #787e99 0%, #656678 100%);
+  background: -moz-linear-gradient(to right, #787e99 0%, #656678 100%);
+  background: linear-gradient(to right, #787e99 0%, #656678 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>

@@ -1,6 +1,18 @@
 // app global css in SCSS form
 
+// fonts
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+// styles
+
 body {
-  background-color: rgba(22, 20, 21, 0.87);
+  background: rgb(46, 47, 71);
+  background: linear-gradient(
+    180deg,
+    rgba(46, 47, 71, 1) 0%,
+    rgba(51, 52, 78, 1) 35%,
+    rgba(72, 73, 111, 1) 100%
+  );
   color: white;
+  font-family: "Poppins", sans-serif;
 }

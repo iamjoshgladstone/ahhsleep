@@ -1,20 +1,18 @@
 <template>
-  <div
-    class="window-height window-width row justify-center items-center q-pa-lg"
-  >
+  <div class="column justify-center items-center q-pa-lg q-mt-xl">
+    <p>Drag to set timer</p>
     <q-slider
       v-model="minutes"
       :min="0"
       :max="15"
       :step="1"
       dark
-      label
-      dense
-      label-always
-      color="light-blue"
+      rounded
+      style="background: #6f7793"
       track-size="35px"
+      thumb-size="35px"
     />
-    <q-knob
+    <!-- <q-knob
       v-model="minutes"
       size="200px"
       :thickness="0.2"
@@ -25,15 +23,15 @@
       show-value
       :min="0"
       :max="15"
-    />
-    <!-- <div>
-      <h3>{{ timeDisplay }}</h3>
-    </div> -->
+    /> -->
+    <div>
+      <h3 class="text-color">{{ timeDisplay }}</h3>
+    </div>
     <div>
       <q-btn
         size="22px"
+        style="background: #6f7793"
         class="q-px-xl q-py-xs"
-        color="purple"
         label="Start Timer"
         rounded
         ripple
@@ -47,7 +45,7 @@
       <q-btn
         size="22px"
         class="q-px-xl q-py-xs"
-        color="purple"
+        style="background: #6f7793"
         label="Stop Timer"
         rounded
         push
@@ -183,7 +181,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 body {
   background-color: #213f20;
 }
@@ -197,5 +195,26 @@ h2 {
 
 .q-time__header {
   display: none;
+}
+
+.q-btn {
+  color: white;
+}
+
+.text-color {
+  color: #3cba9c;
+}
+.q-slider,
+.q-slider__track {
+  border-radius: 20px;
+  padding: 0px 5px;
+}
+.q-slider__selection {
+  background: #43445c;
+}
+
+.q-slider__thumb {
+  width: 35px;
+  height: 35px;
 }
 </style>
