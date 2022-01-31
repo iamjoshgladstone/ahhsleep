@@ -6,14 +6,46 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <q-footer bordered class="">
+      <q-tabs
+        no-caps
+        active-color="primary"
+        indicator-color="transparent"
+        class="text-primary"
+      >
+        <q-route-tab
+          :to="{ name: 'Home' }"
+          dense
+          name="timer"
+          icon="eva-clock"
+        />
+        <q-route-tab
+          dense
+          :to="{ name: 'About' }"
+          name="settings"
+          icon="eva-question-mark-circle-outline"
+        />
+      </q-tabs>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
 export default {
   name: "MainLayout",
-
-  components: {},
+  setup() {
+    const router = useRouter();
+    const userHasSwiped = (obj) => {
+      console.log(obj.direction);
+      if (obj.direction === "left") {
+        router.push({ name: "About" });
+      } else if (obj.direction === "right") {
+        router.push({ name: "Home" });
+      }
+    };
+    return { userHasSwiped };
+  },
 };
 </script>
 

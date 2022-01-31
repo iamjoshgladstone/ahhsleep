@@ -15,18 +15,6 @@
       track-size="35px"
       thumb-size="35px"
     />
-    <!-- <q-knob
-      v-model="minutes"
-      size="200px"
-      :thickness="0.2"
-      color="purple-3"
-      center-color="purple"
-      track-color="purple-1"
-      class="q-ma-md"
-      show-value
-      :min="0"
-      :max="15"
-    /> -->
 
     <div>
       <q-btn
@@ -69,7 +57,7 @@ export default {
     const minutes = ref(5);
     const timerIsStarted = ref(false);
     const currentTimeInSeconds = ref(minutes.value * 60);
-    const int = ref(1000);
+    const int = ref(2000);
     let timer;
     let audioTimer;
     let fadeOut;
