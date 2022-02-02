@@ -42,6 +42,7 @@
         @click="
           stopTimer();
           stopAudio();
+          stopFade();
         "
       />
     </div>
@@ -99,14 +100,14 @@ export default {
     };
 
     const startFade = () => {
-      const fadeInt = (minutes.value * 60) / 100 / 1000;
-      const fadeSeconds = ((minutes.value * 60) / 100) * 1000;
+      const fadeInt = minutes.value * 600;
       fadeOut = setInterval(() => {
         if (vol > 0) {
-          vol = vol - fadeInt;
+          vol = vol - 0.01;
           audioElement.volume = vol;
         }
-      }, fadeSeconds);
+        console.log(audioElement.volume);
+      }, fadeInt);
     };
 
     const stopFade = () => {

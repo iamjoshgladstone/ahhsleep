@@ -31,21 +31,8 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 export default {
   name: "MainLayout",
-  setup() {
-    const router = useRouter();
-    const userHasSwiped = (obj) => {
-      console.log(obj.direction);
-      if (obj.direction === "left") {
-        router.push({ name: "About" });
-      } else if (obj.direction === "right") {
-        router.push({ name: "Home" });
-      }
-    };
-    return { userHasSwiped };
-  },
 };
 </script>
 

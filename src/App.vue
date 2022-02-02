@@ -23,3 +23,16 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+/*set opacity to 0 at element's entrance and exit*/
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
