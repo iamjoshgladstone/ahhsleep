@@ -1,27 +1,21 @@
 <template>
-  <div v-touch-swipe.horizontal="userHasSwiped">
+  <div>
     <router-view />
   </div>
 </template>
-<script>
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
-export default defineComponent({
-  name: "App",
+<script setup>
+// v-touch-swipe.horizontal="userHasSwiped"
+// import { useRouter } from "vue-router";
 
-  setup() {
-    const router = useRouter();
-    const userHasSwiped = (obj) => {
-      console.log(obj.direction);
-      if (obj.direction === "left") {
-        router.push({ name: "About" });
-      } else if (obj.direction === "right") {
-        router.push({ name: "Home" });
-      }
-    };
-    return { userHasSwiped };
-  },
-});
+// const router = useRouter();
+// const userHasSwiped = (obj) => {
+//   console.log(obj.direction);
+//   if (obj.direction === "left") {
+//     router.push({ name: "About" });
+//   } else if (obj.direction === "right") {
+//     router.push({ name: "Home" });
+//   }
+// };
 </script>
 
 <style scoped>

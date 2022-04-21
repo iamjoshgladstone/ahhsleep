@@ -2,7 +2,7 @@
   "name": "sleepy-words",
   "version": "0.0.1",
   "description": "Fall asleep fast with soothing sounds",
-  "productName": "Sleepy Words",
+  "productName": "Ahhsleep",
   "author": "Josh Gladstone <joshgladstone1@gmail.com>",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "firebase": "^9.6.5",
     "quasar": "^2.0.0",
     "vue-page-transition": "^0.2.2"
   },

@@ -1,8 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <header class="q-mt-lg row justify-center items-center text-center">
-      <div class="text-gradient">Ahhsleep</div>
-    </header>
+    <Navbar></Navbar>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -30,10 +28,8 @@
   </q-layout>
 </template>
 
-<script>
-export default {
-  name: "MainLayout",
-};
+<script setup>
+import Navbar from "../components/Navbar.vue";
 </script>
 
 <style>
