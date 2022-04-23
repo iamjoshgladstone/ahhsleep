@@ -1,6 +1,10 @@
 <template>
   <div>
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <q-slide-transition>
+        <component :is="Component"></component>
+      </q-slide-transition>
+    </router-view>
   </div>
 </template>
 <script setup>
@@ -18,15 +22,14 @@
 // };
 </script>
 
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-/*set opacity to 0 at element's entrance and exit*/
-.fade-enter,
+<style>
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 5s ease-out;
 }
 </style>

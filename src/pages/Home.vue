@@ -1,5 +1,5 @@
 <template>
-  <div class="column justify-center items-center q-pa-lg q-mt-xl">
+  <div class="column justify-center items-center q-pa-lg background">
     <div>
       <h3 class="text-color">{{ timeDisplay }}</h3>
     </div>
@@ -47,6 +47,7 @@
         "
       />
     </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -55,6 +56,10 @@ import words from "../assets/words.json";
 import { ref, computed, watch } from "vue";
 import getCollection from "../composables/getCollection.js";
 import { db, storage } from "../firebase/config.js";
+
+// PROPS
+const props = defineProps(["wordList"]);
+const generatedWordList = JSON.parse(JSON.stringify(props.wordList));
 
 // Define refs and variables
 const minutes = ref(5);
@@ -65,14 +70,16 @@ let timer;
 let audioTimer;
 let fadeOut;
 var vol = 1;
-var index = Math.floor(Math.random() * words.length);
+var index = Math.floor(Math.random() * generatedWordList.length);
 var songArrayToExclude = [];
 const tagSelection = ref("All");
 
 const isDisabled = ref(false);
 
+console.log(generatedWordList);
+
 // Add all the available words to the array
-for (var i = 0; i <= words.length - 1; i++) {
+for (var i = 0; i <= generatedWordList.length - 1; i++) {
   songArrayToExclude.push(i);
 }
 
@@ -108,7 +115,7 @@ audioElement.addEventListener("ended", () => {
   console.log(index);
 
   if (songArrayToExclude.length === 0) {
-    for (var i = 1; i <= words.length - 1; i++) {
+    for (var i = 1; i <= generatedWordList.length - 1; i++) {
       songArrayToExclude.push(i);
     }
   }
@@ -151,7 +158,7 @@ const stopFade = () => {
 };
 
 const playAudio = () => {
-  audioElement.src = words[index].file;
+  audioElement.src = generatedWordList[index];
   audioElement.play();
   roomNoise.play();
 };
@@ -169,9 +176,6 @@ const startFade = () => {
 </script>
 
 <style>
-body {
-  background-color: #213f20;
-}
 h2 {
   font-size: 30px;
 }
@@ -204,4 +208,8 @@ h2 {
   width: 35px;
   height: 35px;
 }
+
+/* .background {
+  background-color: black;
+} */
 </style>

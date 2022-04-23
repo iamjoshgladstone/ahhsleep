@@ -12,7 +12,7 @@
         class="text-primary"
       >
         <q-route-tab
-          :to="{ name: 'Home' }"
+          :to="{ name: 'Test' }"
           dense
           name="timer"
           icon="eva-clock"
