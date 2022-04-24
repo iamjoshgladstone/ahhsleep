@@ -9,14 +9,19 @@ const routes = [
         component: () => import("src/pages/Home.vue"),
       },
       {
+        path: "/timer",
+        name: "Timer",
+        component: () => import("src/pages/Timer.vue"),
+      },
+      {
         path: "/about",
         name: "About",
         component: () => import("src/pages/About.vue"),
       },
       {
         path: "/test",
-        name: "Test",
-        component: () => import("src/pages/Test.vue"),
+        name: "test",
+        component: () => import("src/pagesold/HomeOLD.vue"),
       },
     ],
   },

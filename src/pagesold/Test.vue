@@ -44,7 +44,7 @@
 <script setup>
 import { ref } from "vue";
 import { db } from "../firebase/config";
-import Home from "../pages/Home.vue";
+import Home from "./HomeOLD.vue";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { useWords } from "../pinia/words.js";
 

@@ -11,12 +11,7 @@
         indicator-color="transparent"
         class="text-primary"
       >
-        <q-route-tab
-          :to="{ name: 'Test' }"
-          dense
-          name="timer"
-          icon="eva-clock"
-        />
+        <q-route-tab :to="{ name: 'Home' }" dense name="timer" icon="eva-clock" />
         <q-route-tab
           dense
           :to="{ name: 'About' }"
@@ -41,13 +36,5 @@ header {
   background-color: rgba(46, 47, 71, 1);
   height: 50px;
   font-size: 50px;
-}
-.text-gradient {
-  background: #787e99;
-  background: -webkit-linear-gradient(to right, #787e99 0%, #656678 100%);
-  background: -moz-linear-gradient(to right, #787e99 0%, #656678 100%);
-  background: linear-gradient(to right, #787e99 0%, #656678 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 </style>
